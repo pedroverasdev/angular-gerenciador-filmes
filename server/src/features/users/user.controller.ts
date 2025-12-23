@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { UserService } from './user.service';
 import { User, UserResponse } from './user.interface';
+import { AuthenticatedRequest } from '../../middlewares/auth.middleware';
 
 const userService = new UserService();
 const JWT_SECRET = 'minha_chave_secreta_super_segura';
@@ -63,6 +64,23 @@ export class UserController {
       token,
       user: userResponse,
     });
+  }
+
+  async validateToken(req: AuthenticatedRequest, res: Response): Promise<void> {
+    // O authMiddleware já garantiu que req.user existe
+    const userId = req.user!.id;
+
+    const user = await userService.findById(userId);
+
+    if (!user) {
+      // Caso raro: Token é válido, mas o usuário foi deletado do banco
+      res.status(404).json({ message: 'Usuário não encontrado' });
+      return;
+    }
+
+    const userResponse = this.toUserResponse(user);
+
+    res.json(userResponse);
   }
 
   private toUserResponse(user: User): UserResponse {
