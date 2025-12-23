@@ -13,6 +13,11 @@ export class UserService {
     return users.find((u) => u.email === email);
   }
 
+  async findById(id: number): Promise<User | undefined> {
+    const users = await this.getUsers();
+    return users.find((u) => u.id === id);
+  }
+
   async create(user: User): Promise<User> {
     const users = await this.getUsers();
     users.push(user);

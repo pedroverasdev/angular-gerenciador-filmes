@@ -79,7 +79,7 @@ collection:
         meta:
           id: req_92e749b72cbe4b079e350d57cc4a9699
           created: 1765014116843
-          modified: 1765103242541
+          modified: 1766517074549
           isPrivate: false
           description: ""
           sortKey: -1765014116843
@@ -96,6 +96,32 @@ collection:
             value: application/json
           - name: User-Agent
             value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}/users/validate-token"
+        name: Validate Token
+        meta:
+          id: req_b54bd5bab25f4dbc99ec24f247129f82
+          created: 1766516967197
+          modified: 1766517106461
+          isPrivate: false
+          description: ""
+          sortKey: -1766516967197
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_92e749b72cbe4b079e350d57cc4a9699',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+          disabled: false
         settings:
           renderRequestBody: true
           encodeUrl: true
