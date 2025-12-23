@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginForm } from '../login-form/login-form';
-import { RegisterUserForm } from '../register-user-form/register-user-form';
+import { LoginForm } from '../../pages/login-form/login-form';
+import { RegisterUserForm } from '../../pages/register-user-form/register-user-form';
 
 @Component({
   selector: 'app-authentication-screen',
