@@ -51,7 +51,7 @@ export class MovieService {
     const newAverage = (currentTotalScore + rating) / movie.qtdVotos;
 
     // 4. Arredondar para 1 casa decimal (ex: 8.5) para ficar bonito
-    movie.mediaVotos = parseFloat(newAverage.toFixed(1));
+    movie.mediaVotos = parseFloat(newAverage.toFixed(4));
 
     // 5. Atualizar o array e Salvar no arquivo
     movies[movieIndex] = movie;
