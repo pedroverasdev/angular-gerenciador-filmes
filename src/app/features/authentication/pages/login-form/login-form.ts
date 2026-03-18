@@ -17,8 +17,6 @@ export class LoginForm {
   private readonly _userApi = inject(UserApi);
   private readonly _router = inject(Router);
   
-  loginErrorMessage = signal<string>('')
-  
   loginModel = signal<ILoginParams>({
     email: '',
     password: '',
