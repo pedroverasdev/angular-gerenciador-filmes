@@ -32,5 +32,10 @@ export const routes: Routes = [
       { path: 'details/:id', component: MovieDetails },
       { path: 'create', component: CreateMovie }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'auth/login',
+    pathMatch: 'full'
   }
 ];
