@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { MoviesList } from '../movies-list/movies-list';
+import { MoviesList } from '../../../../shared/components/movies-list/movies-list';
 
 @Component({
   selector: 'app-explore-movies',
