@@ -1,10 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { email, Field, form, minLength, required } from '@angular/forms/signals';
 import { UserApi } from '../../../../core/services/user-api';
 import { Router } from '@angular/router';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { ILoginParams } from '../../../../shared/models/login-params';
+import { setErrorMessage } from '../../../../shared/utils/set-error-message';
 
 @Component({
   selector: 'app-login-form',
@@ -40,6 +41,8 @@ export class LoginForm {
         .login(params.email, params.password)
         .pipe(tap(() => this._router.navigate(['/explore']))),
   });
+
+  loginError = computed(() => setErrorMessage(this.loginResource.error()));
 
   login() {
     const credentials = this.loginForm().value();
